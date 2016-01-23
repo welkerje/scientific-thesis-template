@@ -31,9 +31,9 @@ before_install:
   #  * biblatex is in texlive-bibtex-extra
   #  * texlive-lang-german for German hyphenation patterns
   - sudo apt-get install -y --no-install-recommends -t wily texlive texlive-lang-german texlive-latex-extra texlive-bibtex-extra texlive-science
-  # fonts Linux Libertine and lmodern (even though cfr-lm should be preferred - see http://tex.stackexchange.com/a/247543/9075)
-  - sudo apt-get install -y --no-install-recommends -t wily texlive-fonts-extra lmodern
-  # latexmk
+  # font Linux Libertine
+  - sudo apt-get install -y --no-install-recommends -t wily texlive-fonts-extra
+  # biber and latexmk
   - sudo apt-get install -y --no-install-recommends -t wily biber latexmk
 
 script: latexmk
