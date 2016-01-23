@@ -35,5 +35,7 @@ before_install:
   - sudo apt-get install -y --no-install-recommends -t wily texlive-fonts-extra
   # biber and latexmk
   - sudo apt-get install -y --no-install-recommends -t wily biber latexmk
+  # try to work around "This NFSS system isn't set up properly"
+  - fmtutil --all
 
 script: latexmk
