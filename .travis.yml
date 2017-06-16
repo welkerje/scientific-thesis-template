@@ -4,17 +4,12 @@ language: bash
 # see https://docs.travis-ci.com/user/trusty-ci-environment/
 sudo: required
 dist: trusty
+# use docker - as descrbied at: https://docs.travis-ci.com/user/docker/
+services: docker
 
 before_install:
-  - _scripts/travis-install-tl.sh
-  # refresh PATH variable
-  - . /etc/environment
-  # latexmk has to be installed after install-tl-ubuntu to ensure that texlive is not taken from debian, but the latest one. In other words: addons->apt->packages cannot be used
-  - sudo apt-get install -y latexmk
+  - docker pull camilstaps/texlive
 
-script: latexmk
-
-cache:
-  directories:
-    - /opt/texbin
-    - /usr/local/texlive
+script:
+#  - docker run -v `pwd`:/var/tex camilstaps/texlive latexmk ausarbeitung.tex
+  - docker run -v `pwd`:/var/tex camilstaps/texlive pdflatex ausarbeitung.tex
